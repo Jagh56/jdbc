@@ -53,9 +53,9 @@ public class EtudiantController {
 	/**
 	 * Permet de persister le membre
 	 * @param etudiantManaged : membre
-	 * @param prenom : prénom du membre
-	 * @param nom : nom du membre
-	 * @param email : mail du membre
+	 * @param prenom : prénom de l'étudiant
+	 * @param nom : nom de l'étudiant
+	 * @param email : mail de l'étudiant
 	 */
 	public void saveEtudiantStandalone(Etudiant etudiantManaged, String prenom, String nom, String dateNaissance, String email, String matricule) {
 		if (etudiantManaged != null) {
@@ -85,9 +85,9 @@ public class EtudiantController {
 	
 	/**
 	 * Permet de récupérer l'id d'un membre en fonction de son prénom, de son nom et de son mail
-	 * @param prenom : prénom du membre
-	 * @param nom : nom du membre
-	 * @return l'id du membre
+	 * @param prenom : prénom de l'étudiant
+	 * @param nom : nom de l'étudiant
+	 * @return l'id de l'étudiant
 	 */
 	public int getEtudiantIdByNomPrenom(String nom, String prenom) {
 		int idetu = 0;
@@ -102,9 +102,9 @@ public class EtudiantController {
 	
 	/**
 	 * Permet de récupérer l'id d'un membre en fonction de son prénom, de son nom et de son mail
-	 * @param prenom : prénom du membre
-	 * @param nom : nom du membre
-	 * @return l'id du membre
+	 * @param prenom : prénom de l'étudiant
+	 * @param nom : nom de l'étudiant
+	 * @return l'id de l'étudiant
 	 */
 	public Etudiant getEtudiantById(int id) {
 		Etudiant etu = null;
@@ -116,13 +116,13 @@ public class EtudiantController {
 		return etu;
 	}
 	
-		
+	
 	
 	/**
 	 * Permet de supprimer un étudiant
 	 * @param etudiantManaged : etudiant
 	 */
-	public void deleteHackathon(Etudiant etudiantManaged) {
+	public void deleteEtudiant(Etudiant etudiantManaged) {
 		try {
 			etudiants.remove(DAOEtudiant.getInstance().getOneById(etudiantManaged.getId()));
 			
