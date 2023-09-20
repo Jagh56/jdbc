@@ -1,8 +1,5 @@
 package jdbc;
 
-import jdbc.Etudiant;
-import jdbc.DALException;
-import jdbc.DAOEtudiant;
 import java.util.List;
 
 public class EtudiantController {
@@ -75,21 +72,21 @@ public class EtudiantController {
 			}
 		} else {
 			// Nouveau membre
-			etudiantManaged = new Etudiant(prenom, nom, dateNaissance, email, matricule);
+			etudiantManaged = new Etudiant(nom, prenom, dateNaissance, email, matricule);
 			//persistance : Insert
 			try {
-				DAOEtudiant.getInstance().saveEtudiant(etudiantManaged);
+				DAOEtudiant.getInstance().save(etudiantManaged);
 			} catch (DALException e) {
 				e.printStackTrace();
 			}
 		}
 	}
 
+	
 	/**
 	 * Permet de récupérer l'id d'un membre en fonction de son prénom, de son nom et de son mail
 	 * @param prenom : prénom du membre
 	 * @param nom : nom du membre
-	 * @param mail : mail du membre
 	 * @return l'id du membre
 	 */
 	public int getEtudiantIdByNomPrenom(String nom, String prenom) {
@@ -102,6 +99,24 @@ public class EtudiantController {
 		return idetu;
 	}
 	
+	
+	/**
+	 * Permet de récupérer l'id d'un membre en fonction de son prénom, de son nom et de son mail
+	 * @param prenom : prénom du membre
+	 * @param nom : nom du membre
+	 * @return l'id du membre
+	 */
+	public Etudiant getEtudiantById(int id) {
+		Etudiant etu = null;
+		try {
+			etu = DAOEtudiant.getInstance().getOneById(id);
+		} catch (DALException e) {
+			e.printStackTrace();
+		}
+		return etu;
+	}
+	
+		
 	
 	/**
 	 * Permet de supprimer un étudiant
@@ -117,6 +132,7 @@ public class EtudiantController {
 			e.printStackTrace();
 		}
 	}
+	
 	
 	public void refresh(){
         try {

@@ -63,9 +63,11 @@ public class Main {
 				}
 				
 				case "3": {		// Modification d'un étudiant
-					System.out.println("Entrez le nom et prénom de l'étudiant à modifier : ");
+					System.out.println("Entrez le nom, puis le prénom de l'étudiant à modifier : ");
 					String oldNom = userInput();
 					String oldPrenom = userInput();
+					Etudiant etudiantManaged = EtudiantController.getInstance().getEtudiantById
+							(EtudiantController.getInstance().getEtudiantIdByNomPrenom(oldNom, oldPrenom));
 					
 					System.out.println("Entrez le nouveau nom de l'élève : ");
 					String newNom = userInput();
@@ -78,18 +80,18 @@ public class Main {
 					System.out.println("Entrez le nouveau matricule de l'élève : ");
 					String newMatricule = userInput();
 					
-					EtudiantController.getInstance().saveEtudiantStandalone(null, newPrenom, newNom, newDateNaissance, newEmail, newMatricule);
+					EtudiantController.getInstance().saveEtudiantStandalone(etudiantManaged,
+							newPrenom, newNom, newDateNaissance, newEmail, newMatricule);
 					EtudiantController.getInstance().refresh();
 					break;
 				}
 				
 				case "4": {		// Suppression d'un étudiant
-					System.out.println("Cette fonctionnalité n'est pas encore implémenté");
+					System.out.println("Cette fonctionnalité n'est pas encore implémentée");
 					
 					EtudiantController.getInstance().refresh();
 					break;
 				}
-				
 				
 				default:
 					throw new IllegalArgumentException("Unexpected value: " + choix);

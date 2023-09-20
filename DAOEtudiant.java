@@ -37,7 +37,7 @@ public class DAOEtudiant extends DAO<Etudiant> {
 	 * Les requêtes de sélection
 	 */
 	private static final String sqlSelectAll = "select * from Etudiants e order by e.nom";
-	private static final String sqlSelectIdByNomPrenom= "select e.id from Etudiants e where e.nom = ? and e.prenom = ? order by e.nom";
+	private static final String sqlSelectIdByNomPrenom = "select e.id from Etudiants e where e.nom = ? and e.prenom = ? order by e.nom";
 	private static final String sqlSelectOneById = "select * from Etudiants e where e.id = ?";
 
 	/**
@@ -58,24 +58,7 @@ public class DAOEtudiant extends DAO<Etudiant> {
     private static final String sqlDeleteEtudiantById = "delete from Etudiants where id = ?";
     
     
-	/**
-	 * Permet de supprimer le Etudiant en fonction de son id
-	 * @param etuid : id de Etudiant
-	 * @throws DALException : message d'erreur
-	 */
-	public void deleteEtudiantById(int etuid) throws DALException {
-		try {
-			Connection cnx = JdbcTools.getConnection();
-			PreparedStatement rqt = cnx.prepareStatement(sqlDeleteEtudiantById);
-			rqt.setInt(1, etuid);
-			rqt.executeUpdate();
-			rqt.close();
-		} catch (SQLException e) {
-			throw new DALException(e.getMessage(),e);
-		}
-	}
-
-
+	
 	/**
 	 * Permet de récupérer tous les Etudiants stockés dans la table Etudiant
 	 * @return la liste des Etudiants
@@ -165,7 +148,8 @@ public class DAOEtudiant extends DAO<Etudiant> {
 	 * @param obj : Etudiant à inserer
 	 * @throws DALException : message d'erreur
 	 */
-	public void saveEtudiant(Etudiant obj) throws DALException {
+	@Override
+	public void save(Etudiant obj) throws DALException {
 		try {
 			Connection cnx = JdbcTools.getConnection();
 			PreparedStatement rqt = cnx.prepareStatement(sqlInsertOne);
@@ -183,15 +167,16 @@ public class DAOEtudiant extends DAO<Etudiant> {
 			throw new DALException(e.getMessage(),e);
 		}
 	}
-
-
-
+	
+	
+	
+	@Override
 	/**
 	 * Permet de mettre à jour uniquement les settings de Etudiant dans la base de données
 	 * @param obj : Etudiant à mettre à jour
 	 * @throws DALException : message d'erreur
 	 */
-	public void updateSettings(Etudiant obj) throws DALException {
+	public void update(Etudiant obj) throws DALException {
 		try {
 			Connection cnx = JdbcTools.getConnection();
 			PreparedStatement rqt = cnx.prepareStatement(sqlUpdateOne);
@@ -207,15 +192,25 @@ public class DAOEtudiant extends DAO<Etudiant> {
 			throw new DALException(e.getMessage(),e);
 		}
 	}
-
-
-	@Override
-	public void save(Etudiant obj) throws DALException {
-		saveEtudiant(obj);
+	
+	
+	
+	/**
+	 * Permet de supprimer le Etudiant en fonction de son id
+	 * @param etuid : id de Etudiant
+	 * @throws DALException : message d'erreur
+	 */
+	public void deleteEtudiantById(int etuid) throws DALException {
+		try {
+			Connection cnx = JdbcTools.getConnection();
+			PreparedStatement rqt = cnx.prepareStatement(sqlDeleteEtudiantById);
+			rqt.setInt(1, etuid);
+			rqt.executeUpdate();
+			rqt.close();
+		} catch (SQLException e) {
+			throw new DALException(e.getMessage(),e);
+		}
 	}
 
-	@Override
-	public void update(Etudiant obj) throws DALException {
-		updateSettings(obj);
-	}
+
 }
