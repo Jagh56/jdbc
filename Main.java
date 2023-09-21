@@ -49,6 +49,7 @@ public class Main {
 					System.out.println(resNom + " | " + resPrenom + " | " + resDateNaissance + " | "+ resEmail
 							+ " | " + resMatricule);
 				}
+				System.out.println("\n");
 				break;
 			}
 			
@@ -66,6 +67,7 @@ public class Main {
 				
 				EtudiantController.getInstance().saveEtudiantStandalone(null, unPrenom, unNom, uneDateNaissance, unEmail, unMatricule);
 				EtudiantController.getInstance().refresh();
+				System.out.println("\n");
 				break;
 			}
 			
@@ -90,6 +92,7 @@ public class Main {
 				EtudiantController.getInstance().saveEtudiantStandalone(etudiantManaged,
 						newPrenom, newNom, newDateNaissance, newEmail, newMatricule);
 				EtudiantController.getInstance().refresh();
+				System.out.println("\n");
 				break;
 			}
 			
@@ -102,6 +105,7 @@ public class Main {
 				
 				EtudiantController.getInstance().deleteEtudiant(etudiantManaged);
 				EtudiantController.getInstance().refresh();
+				System.out.println("\n");
 				break;
 			}
 			
