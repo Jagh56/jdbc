@@ -3,6 +3,11 @@ package jdbc;
 import java.util.List;
 
 public class EtudiantController {
+	
+	/*
+	 * Controller :
+	 * Effectue le lien entre le DAO et la·les classe·s
+	 */
 
 	/**
 	 * PATTERN SINGLETON : contraint l'instanciation d'une UNIQUE instance de classe

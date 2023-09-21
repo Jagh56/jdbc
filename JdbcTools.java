@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class JdbcTools {
 
-	private static String urldb;
-	private static String userdb;
-	private static String passworddb;
+	private static String jdbcUrl;
+	private static String user;
+	private static String password;
 
 	private static Connection connection = null;
 
@@ -17,9 +17,9 @@ public class JdbcTools {
 		if(connection == null) {
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
-				String jdbcUrl = "jdbc:mysql://localhost:3306/jdbc"; // URL de la base de données (changez-la en fonction de votre configuration)
-				String user = "root"; // Nom d'utilisateur MySQL
-				String password = ""; // Mot de passe MySQL
+				jdbcUrl = "jdbc:mysql://localhost:3306/jdbc"; // URL de la base de données (changez-la en fonction de votre configuration)
+				user = "root"; // Nom d'utilisateur MySQL
+				password = ""; // Mot de passe MySQL
 				connection = DriverManager.getConnection(jdbcUrl, user, password);
 			} catch (SQLException | ClassNotFoundException e) {
 				e.printStackTrace();

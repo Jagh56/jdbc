@@ -1,7 +1,5 @@
 package jdbc;
 
-import jdbc.JdbcTools;
-import jdbc.Etudiant;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +10,11 @@ import java.util.List;
  * BD : Table Etudiant
  */
 public class DAOEtudiant extends DAO<Etudiant> {
+	
+	/*
+	 * Data Access Object pattern :
+	 * Sépare l'interface client d'une ressource de données de ses mécanismes d'accès aux données
+	 */
 
 	/**
 	 * PATTERN SINGLETON : contraint l'instanciation d'une UNIQUE instance de classe
@@ -36,20 +39,21 @@ public class DAOEtudiant extends DAO<Etudiant> {
 	 *
 	 * Les requêtes de sélection
 	 */
-	private static final String sqlSelectAll = "select * from Etudiants e order by e.nom";
-	private static final String sqlSelectIdByNomPrenom = "select e.id from Etudiants e where e.nom = ? and e.prenom = ? order by e.nom";
-	private static final String sqlSelectOneById = "select * from Etudiants e where e.id = ?";
+	private static final String sqlSelectAll = "select * from Etudiants order by nom";
+	private static final String sqlSelectIdByNomPrenom = "select id from Etudiants where nom = ? and prenom = ?"
+			+ " order by nom";
+	private static final String sqlSelectOneById = "select * from Etudiants where id = ?";
 
 	/**
 	 * Les requêtes de mise à jour
 	 */
 	private static final String sqlUpdateOne = "update Etudiants set nom = ?, prenom = ?, date_naissance = ?, "
-			+ "email = ?, matricule = ?";
+			+ "email = ?, matricule = ? where id = ?";
 
 	/**
-	 * Les requêtes d'insertions
+	 * Les requêtes d'insertion
 	 */
-	private static final String sqlInsertOne = "insert into Etudiants(nom, prenom, date_naissane, email, matricule)"
+	private static final String sqlInsertOne = "insert into Etudiants (nom, prenom, date_naissance, email, matricule)"
 			+ " values (?,?,?,?,?)";
 
 	/**
