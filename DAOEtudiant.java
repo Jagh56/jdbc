@@ -20,7 +20,6 @@ public class DAOEtudiant extends DAO<Etudiant> {
 	 * PATTERN SINGLETON : contraint l'instanciation d'une UNIQUE instance de classe
 	 */
 	private static DAOEtudiant instanceDAOEtudiants;
-	private Etudiant obj;
 
 	/**
 	 * Pattern Singleton

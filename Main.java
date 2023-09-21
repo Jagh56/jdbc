@@ -20,7 +20,7 @@ public class Main {
 			System.out.println("4. Supprimer un étudiant");
 			System.out.println("9. Quitter");
 			try {
-				System.out.println("Choix :");
+				System.out.print("Choix : ");
 				choix = userInput.nextLine();			// Enregistrement du choix de l'utilisateur sous format String
 			} catch(Exception e) {
 				System.out.println(e.getMessage());
@@ -53,15 +53,15 @@ public class Main {
 			}
 			
 			case "2": {		// Insertion d'un nouvel étudiant
-				System.out.println("Entrez le nom du nouvel l'élève : ");
+				System.out.print("Entrez le nom du nouvel l'élève : ");
 				String unNom = userInput.next();
-				System.out.println("Entrez le prénom du nouvel l'élève : ");
+				System.out.print("Entrez le prénom du nouvel l'élève : ");
 				String unPrenom = userInput.next();
-				System.out.println("Entrez la date de naissance du nouvel l'élève : ");
+				System.out.print("Entrez la date de naissance du nouvel l'élève : ");
 				String uneDateNaissance = userInput.next();
-				System.out.println("Entrez le mail du nouvel l'élève : ");
+				System.out.print("Entrez le mail du nouvel l'élève : ");
 				String unEmail = userInput.next();
-				System.out.println("Entrez le matricule du nouvel l'élève : ");
+				System.out.print("Entrez le matricule du nouvel l'élève : ");
 				String unMatricule = userInput.next();
 				
 				EtudiantController.getInstance().saveEtudiantStandalone(null, unPrenom, unNom, uneDateNaissance, unEmail, unMatricule);
@@ -76,15 +76,15 @@ public class Main {
 				Etudiant etudiantManaged = EtudiantController.getInstance().getEtudiantById
 						(EtudiantController.getInstance().getEtudiantIdByNomPrenom(oldNom, oldPrenom));
 				
-				System.out.println("Entrez le nouveau nom de l'élève : ");
+				System.out.print("Entrez le nouveau nom de l'élève : ");
 				String newNom = userInput.next();
-				System.out.println("Entrez le nouveau prénom de l'élève : ");
+				System.out.print("Entrez le nouveau prénom de l'élève : ");
 				String newPrenom = userInput.next();
-				System.out.println("Entrez la nouvelle date de naissance de l'élève : ");
+				System.out.print("Entrez la nouvelle date de naissance de l'élève : ");
 				String newDateNaissance = userInput.next();
-				System.out.println("Entrez le nouveau mail de l'élève : ");
+				System.out.print("Entrez le nouveau mail de l'élève : ");
 				String newEmail = userInput.next();
-				System.out.println("Entrez le nouveau matricule de l'élève : ");
+				System.out.print("Entrez le nouveau matricule de l'élève : ");
 				String newMatricule = userInput.next();
 				
 				EtudiantController.getInstance().saveEtudiantStandalone(etudiantManaged,
